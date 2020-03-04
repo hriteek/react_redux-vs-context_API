@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import MainNavigation from '../components/MainNavigation';
-import { removeProductFromCart } from '../store/actions';
-import './Cart.css';
+import MainNavigation from "../components/MainNavigation";
+import { removeProductFromCart } from "../store/actions";
+import "./Cart.css";
 
 class CartPage extends Component {
   render() {
     return (
-      <React.Fragment>
+      <>
         <MainNavigation cartItemNumber={this.props.cartItemCount} />
         <main className="cart">
           {this.props.cartItems.length <= 0 && <p>No Item in the Cart!</p>}
@@ -33,7 +33,7 @@ class CartPage extends Component {
             ))}
           </ul>
         </main>
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -53,7 +53,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CartPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

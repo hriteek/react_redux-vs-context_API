@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import MainNavigation from '../components/MainNavigation';
-import { addProductToCart } from '../store/actions';
-import './Products.css';
+import MainNavigation from "../components/MainNavigation";
+import { addProductToCart } from "../store/actions";
+import "./Products.css";
 
 class ProductsPage extends Component {
   render() {
     return (
-      <React.Fragment>
+      <>
         <MainNavigation cartItemNumber={this.props.cartItemCount} />
         <main className="products">
           <ul>
@@ -28,7 +28,7 @@ class ProductsPage extends Component {
             ))}
           </ul>
         </main>
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -48,7 +48,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProductsPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
