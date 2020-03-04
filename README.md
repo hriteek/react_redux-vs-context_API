@@ -1,5 +1,3 @@
-I have cloned this project from [this tutorial](https://www.youtube.com/watch?v=OvM4hIxrqAw&t=152s)
+I have cloned this project from [link](https://github.com/academind/react-redux-vs-context/tree/redux) and followed [this tutorial](https://www.youtube.com/watch?v=OvM4hIxrqAw&t=152s) to convert the code that was using Redux for state management to use Context API for state management. I just compared two.
 
-In this tutorial, initial code is set up with Redux for state management, but through out the tutorial we are converting the code to use Context API for the state management, so that we could compare the two.
-
-Here we have use class based components, so now we will convert the class based component into React Hooks.
+But the code used class based component so I followed [this tutorial](https://www.youtube.com/watch?v=R_7XRX7nLsw), to convert the class based component into functional component with React hooks (useState, useEffect, useContext, useReducer).
