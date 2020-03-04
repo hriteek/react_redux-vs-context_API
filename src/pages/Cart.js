@@ -2,18 +2,19 @@ import React, { useContext, useEffect } from "react";
 // import { connect } from "react-redux";
 
 import ShopContext from "../context/shop-context";
+import { DELETE_PRODUCT } from "../context/GlobalState";
 import MainNavigation from "../components/MainNavigation";
 // import { removeProductFromCart } from "../store/actions";
 import "./Cart.css";
 
 const CartPage = props => {
-  const context = useContext(ShopContext);
+  const { state, dispatch } = useContext(ShopContext);
 
   useEffect(() => {
-    console.log(context);
+    console.log(state);
   }, []);
 
-  const { cart, removeProductFromCart } = context;
+  const { cart } = state;
   return (
     <>
       <MainNavigation
@@ -31,7 +32,11 @@ const CartPage = props => {
                 {cartItem.quantity})
               </div>
               <div>
-                <button onClick={removeProductFromCart.bind(this, cartItem.id)}>
+                <button
+                  onClick={() =>
+                    dispatch({ type: DELETE_PRODUCT, productID: cartItem.id })
+                  }
+                >
                   Remove from Cart
                 </button>
               </div>

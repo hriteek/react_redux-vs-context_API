@@ -1,42 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { connect } from "react-redux";
 import ShopContext from "../context/shop-context";
+import { ADD_PRODUCT } from "../context/GlobalState";
 
 import MainNavigation from "../components/MainNavigation";
 // import { addProductToCart } from "../store/actions";
 import "./Products.css";
 
 const ProductsPage = props => {
+  const { state, dispatch } = useContext(ShopContext);
   return (
-    <ShopContext.Consumer>
-      {context => (
-        <>
-          <MainNavigation
-            cartItemNumber={context.cart.reduce((count, curItem) => {
-              return count + curItem.quantity;
-            }, 0)}
-          />
-          <main className="products">
-            <ul>
-              {context.products.map(product => (
-                <li key={product.id}>
-                  <div>
-                    <strong>{product.title}</strong> - ${product.price}
-                  </div>
-                  <div>
-                    <button
-                      onClick={context.addProductToCart.bind(this, product)}
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </main>
-        </>
-      )}
-    </ShopContext.Consumer>
+    <>
+      <MainNavigation
+        cartItemNumber={state.cart.reduce((count, curItem) => {
+          return count + curItem.quantity;
+        }, 0)}
+      />
+      <main className="products">
+        <ul>
+          {state.products.map(product => (
+            <li key={product.id}>
+              <div>
+                <strong>{product.title}</strong> - ${product.price}
+              </div>
+              <div>
+                <button
+                  onClick={() => dispatch({ type: ADD_PRODUCT, product })}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </main>
+    </>
   );
 };
 
